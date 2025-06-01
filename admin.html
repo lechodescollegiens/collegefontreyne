@@ -1,0 +1,28 @@
+<?php session_start();
+if (!isset($_SESSION["admin"])) {
+    header("Location: login.html");
+    exit();
+} ?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - L'écho des collégiens</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Espace Admin</h1>
+        <a href="logout.php">Se déconnecter</a>
+    </header>
+    <main>
+        <h2>Envoyer un journal PDF</h2>
+        <form id="uploadForm" action="upload.php" method="post" enctype="multipart/form-data">
+            <input type="file" name="pdfFile" accept=".pdf" required>
+            <button type="submit">Uploader</button>
+        </form>
+        <div id="responseMsg"></div>
+    </main>
+    <script src="admin.js"></script>
+</body>
+</html>
